@@ -67,12 +67,11 @@ class ProfileController extends Controller
     public function show($id)
 
     {
-//        use MySpecialMethods;
 
-//        $user = mySpecialValue;
         $user = Auth::user();
+        $google_id = $user->google_id;
         $profile = $user->profile;
-        return view( 'profile')->with('profile', $profile);
+        return view( 'profile')->with( 'data', [ 'profile'=> $profile, 'user' => $user, 'google_id' => $google_id]);
     }
 
     /**

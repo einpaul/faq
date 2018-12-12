@@ -8,12 +8,17 @@
                     <div class="card-header">My Profile</div>
 
                     <div class="card-body ">
-                        <span class="font-weight-bold">First Name:</span> {{$profile->fname}}</br>
-                        <span class="font-weight-bold">Last Name: </span>{{$profile->lname}}</br>
-                        <span class="font-weight-bold">Body: </span>{{$profile->body}}</br>
+                        <div>
+                            @if ($data['google_id'])
+                                <img src="{{URL::asset($data['user']->avatar_original)}}" alt="profile Pic" height="200" width="200">
+                            @endif
+                        </div>
+                        <span class="font-weight-bold">First Name:</span> {{($data['profile']->fname)}}</br>
+                        <span class="font-weight-bold">Last Name: </span>{{($data['profile'])->lname}}</br>
+                        <span class="font-weight-bold">Body: </span>{{($data['profile'])->body}}</br>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-success float-right" href="{{ route('profile.edit', ['profile_id' => $profile->id,'user_id' => $profile->user->id]) }}">
+                        <a class="btn btn-success float-right" href="{{ route('profile.edit', ['profile_id' => ($data['profile']->id),'user_id' => ($data['profile']->user->id) ])}}">
                             Edit
                         </a>
                     </div>

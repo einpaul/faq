@@ -14,14 +14,6 @@ use App\User;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-//    public function MySpecialMethods()
-//    {
-//        public function mySpecialValue() {
-//            $user = Auth::user();
-//            return $user;
-//        }
-//    }
-
+    
 }
 

@@ -17,9 +17,9 @@ class UserTest extends TestCase
      */
 
     public function testSave()
+
     {
         $user = factory(\App\User::class)->make();
-
         $this->assertTrue($user->save());
     }
 
