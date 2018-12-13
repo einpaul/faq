@@ -12,6 +12,8 @@
                         <div class="float-right">
                             @if ($answer->user->google_id)
                                 <img src="{{URL::asset($answer->user->avatar_original)}}" alt="profile Pic" height="45" width="45">
+                            @elseif($answer->user->profile)
+                                -{{$answer->user->profile->fname}}
                             @endif
                         </div>
                     </div>

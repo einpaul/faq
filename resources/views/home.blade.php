@@ -11,7 +11,6 @@
                         </a>
 
                         <div class="card-body">
-
                             <div class="card-deck">
                                 @forelse($questions as $question)
                                     <div class="col-sm-4 d-flex align-items-stretch">
@@ -39,17 +38,13 @@
                                 @empty
                                         There are no questions to view, you can  create a question.
                                 @endforelse
-
-
                             </div>
-
                         </div>
                         <div class="card-footer">
                             <div class="float-right">
                                 {{ $questions->links() }}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

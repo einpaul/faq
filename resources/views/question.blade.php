@@ -12,6 +12,8 @@
                         <div class="float-right">
                             @if ($question->user->google_id)
                                 <img src="{{URL::asset($question->user->avatar_original)}}" alt="profile Pic" height="45" width="45">
+                            @elseif($question->user->profile)
+                               -{{$question->user->profile->fname}}
                             @endif
                         </div>
                     </div>
@@ -56,6 +58,8 @@
                                     <div class="float-right">
                                         @if ($answer->user->google_id)
                                             <img src="{{URL::asset($answer->user->avatar_original)}}" alt="profile Pic" height="45" width="45">
+                                        @elseif($answer->user->profile)
+                                           -{{$answer->user->profile->fname}}
                                         @endif
                                     </div>
 
@@ -63,12 +67,9 @@
                             </div>
                         @empty
                             <div class="card">
-
                                 <div class="card-body"> No Answers</div>
                             </div>
                         @endforelse
-
-
                     </div>
                 </div>
             </div>
