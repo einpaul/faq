@@ -5,7 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Answer</div>
+                    <div class="card-header">
+                        <div class="float-left">
+                            Answer
+                        </div>
+                        <div class="float-right">
+                            @if ($answer->user->google_id)
+                                <img src="{{URL::asset($answer->user->avatar_original)}}" alt="profile Pic" height="45" width="45">
+                            @endif
+                        </div>
+                    </div>
                     <div class="card-body">
                         {{$answer->body}}
                     </div>

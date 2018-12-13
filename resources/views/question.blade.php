@@ -5,7 +5,16 @@
         <div class="row ">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Question</div>
+                    <div class="card-header">
+                        <div class="float-left">
+                            Question
+                        </div>
+                        <div class="float-right">
+                            @if ($question->user->google_id)
+                                <img src="{{URL::asset($question->user->avatar_original)}}" alt="profile Pic" height="45" width="45">
+                            @endif
+                        </div>
+                    </div>
 
                     <div class="card-body">
 
@@ -38,10 +47,17 @@
                                 <div class="card-body">{{$answer->body}}</div>
                                 <div class="card-footer">
 
-                                    <a class="btn btn-primary float-right"
-                                       href="{{ route('answers.show', ['question_id'=> $question->id,'answer_id' => $answer->id]) }}">
-                                        View
-                                    </a>
+                                    <div class="float-left">
+                                        <a class="btn btn-primary"
+                                           href="{{ route('answers.show', ['question_id'=> $question->id,'answer_id' => $answer->id]) }}">
+                                            View
+                                        </a>
+                                    </div>
+                                    <div class="float-right">
+                                        @if ($answer->user->google_id)
+                                            <img src="{{URL::asset($answer->user->avatar_original)}}" alt="profile Pic" height="45" width="45">
+                                        @endif
+                                    </div>
 
                                 </div>
                             </div>
