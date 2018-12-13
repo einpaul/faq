@@ -52,6 +52,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+
+                                <a class="btn btn-danger" href='/login/google' role="button">
+                                    Login with Google
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -63,6 +63,14 @@
                             </div>
                         </div>
                     </form>
+                    <br/>
+                    <div class="text-center">
+                        <h3>OR</h3>
+                    </div>
+                    <br/>
+                    <div class="text-center">
+                        <a class="btn btn-danger" href='/login/google' role="button">Login with Google</a>
+                    </div>
                 </div>
             </div>
         </div>
