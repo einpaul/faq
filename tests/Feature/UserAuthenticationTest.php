@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Mockery;
 use Laravel\Socialite\Facades\Socialite;
-use Laravel\Socialite\Contracts\Factory;
+//use Laravel\Socialite\Contracts\Factory as Socialite;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -67,25 +67,28 @@ class UserAuthenticationTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testSocialiteGoogleUser()
+    public function testUserLoginViaGoogle() {
 
-    {
-        $googleuser = Mockery::mock('Laravel\Socialite\Two\User');
-
-        $googleuser
+        $abstractUser = Mockery::mock('Laravel\Socialite\Two\User');
+        $abstractUser
             ->shouldReceive('getId')
-            ->andReturn(rand())
-            ->shouldReceive('getName')
             ->andReturn(str_random(10))
             ->shouldReceive('getEmail')
             ->andReturn(str_random(10) . '@gmail.com')
+            ->shouldReceive('getNickname')
+            ->andReturn('Pseudo')
+            ->shouldReceive('getName')
+            ->andReturn('Scarlett Johansson')
             ->shouldReceive('getAvatar')
             ->andReturn('https://en.gravatar.com/userimage');
 
-        Socialite::shouldReceive('driver->user')->andReturn($googleuser);
+        $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');
+        $provider->shouldReceive('user')->andReturn($abstractUser);
+
+        Socialite::shouldReceive('driver')->with('google')->andReturn($provider);
 
         $this->get('/login/google/callback');
         $this->get('/home');
-    }
 
+    }
 }
