@@ -67,6 +67,14 @@ class UserAuthenticationTest extends TestCase
         $this->assertGuest();
     }
 
+    public function userRedirectedToGoogleForGoogleLogin()
+
+    {
+        $response = $this->call('GET', '/login/google');
+
+        $this->assertContains('google.com/login/oauth', $response->getTargetUrl());
+    }
+
     public function testUserLoginViaGoogle() {
 
         $abstractUser = Mockery::mock('Laravel\Socialite\Two\User');
