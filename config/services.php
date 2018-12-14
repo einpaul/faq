@@ -15,9 +15,9 @@ return [
     */
 
     'google' => [
-        'client_id'     => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect'      => env('GOOGLE_REDIRECT')
+        'client_id'     => '658936510113-b7j21n0aspqrnc7frsa4j04gsggjti5b.apps.googleusercontent.com',
+        'client_secret' => 'vkqD7ZR-0t_FlZqSROswuK_a',
+        'redirect'      => 'https://morning-ridge-18815.herokuapp.com/login/google/callback',
     ],
 
     'mailgun' => [
