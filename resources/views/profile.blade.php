@@ -15,7 +15,9 @@
                         </div>
                         <span class="font-weight-bold">First Name:</span> {{($data['profile']->fname)}}</br>
                         <span class="font-weight-bold">Last Name: </span>{{($data['profile'])->lname}}</br>
+                        <span class="font-weight-bold">Email: </span>{{($data['profile'])->user->email}}</br>
                         <span class="font-weight-bold">Body: </span>{{($data['profile'])->body}}</br>
+                        <span class="font-weight-bold">Type: </span>{{($data['profile'])->user->type}}</br>
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-success float-right" href="{{ route('profile.edit', ['profile_id' => ($data['profile']->id),'user_id' => ($data['profile']->user->id) ])}}">
