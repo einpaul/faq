@@ -34,3 +34,7 @@ Route::resources([
 
 Route::get('/login/google', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/admin', 'AdminController@admin')
+    ->middleware('is_admin')
+    ->name('admin');
