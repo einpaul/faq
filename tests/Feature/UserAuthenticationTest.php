@@ -13,7 +13,7 @@ use App\User;
 
 class UserAuthenticationTest extends TestCase
 {
-
+    /** @test */
     public function testRegisterPage()
 
     {
@@ -21,6 +21,7 @@ class UserAuthenticationTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /** @test */
     public function testLoginPage()
 
     {
@@ -28,6 +29,7 @@ class UserAuthenticationTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /** @test */
     public function testHome()
 
     {
@@ -36,6 +38,7 @@ class UserAuthenticationTest extends TestCase
         $response->assertRedirect('/home');
     }
 
+    /** @test */
     public function testUserCanLoginWithCorrectCredentials()
 
     {
@@ -50,6 +53,7 @@ class UserAuthenticationTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
+    /** @test */
     public function testUserCannotLoginWithIncorrectPassword()
 
     {
@@ -67,14 +71,16 @@ class UserAuthenticationTest extends TestCase
         $this->assertGuest();
     }
 
+    /** @test */
     public function userRedirectedToGoogleForGoogleLogin()
 
     {
         $response = $this->call('GET', '/login/google');
 
-        $this->assertContains('google.com/login/oauth', $response->getTargetUrl());
+        $this->assertContains('accounts.google.com/o/oauth2', $response->getTargetUrl());
     }
 
+    /** @test */
     public function testUserLoginViaGoogle() {
 
         $abstractUser = Mockery::mock('Laravel\Socialite\Two\User');
