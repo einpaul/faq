@@ -16,6 +16,7 @@ class UserTest extends TestCase
      * @return void
      */
 
+    /** @test */
     public function testSave()
 
     {
@@ -23,6 +24,7 @@ class UserTest extends TestCase
         $this->assertTrue($user->save());
     }
 
+    /** @test */
     public function testQuestions()
 
     {
@@ -30,6 +32,7 @@ class UserTest extends TestCase
         $this->assertTrue(is_object($user->questions()->get()));
     }
 
+    /** @test */
     public function testAnswers()
 
     {
@@ -37,6 +40,7 @@ class UserTest extends TestCase
         $this->assertTrue(is_object($user->answers()->get()));
     }
 
+    /** @test */
     public function testProfile()
 
     {
