@@ -13,6 +13,7 @@ class QuestionTest extends TestCase
      *
      * @return void
      */
+    /** @test */
     public function testSave()
 
     {
@@ -21,5 +22,30 @@ class QuestionTest extends TestCase
         $question = factory(\App\Question::class)->make();
         $question->user()->associate($user);
         $this->assertTrue($question->save());
+    }
+
+    /** @test */
+    public function questionUpdate()
+
+    {
+        $user = factory(\App\User::class)->create();
+        $question = factory(\App\Question::class)->create([
+            'user_id' => $user->id,
+        ]);
+        $question->update(['body' => 'Hi, Im the new question']);
+        $this->assertTrue(true);
+        $this->assertEquals('Hi, Im the new question', $question->body );
+    }
+
+    /** @test */
+    public function questionDelete()
+
+    {
+        $user = factory(\App\User::class)->create();
+        $question = factory(\App\Question::class)->create([
+            'user_id' => $user->id,
+        ]);
+        $question->destroy;
+        $this->assertTrue(true);
     }
 }
