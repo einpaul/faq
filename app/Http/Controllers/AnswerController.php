@@ -80,6 +80,7 @@ class AnswerController extends Controller
      */
     public function update(Request $request, $question, $answer)
     {
+        $this->authorize('update', $answer);
         $input = $request->validate([
             'body' => 'required|min:5',
         ], [
@@ -99,7 +100,9 @@ class AnswerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($question, $answer)
+
     {
+        $this->authorize('delete', $answer);
         $answer = Answer::find($answer);
         $answer->delete();
         return redirect()->route('questions.show',['question_id' => $question])->with('message', 'Deleted');
