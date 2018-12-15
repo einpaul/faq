@@ -94,6 +94,7 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
+        $this->authorize('update', $question);
         $input = $request->validate([
             'body' => 'required|min:5',
         ], [
@@ -112,6 +113,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
+        $this->authorize('delete', $question);
         $question->delete();
         return redirect()->route('home')->with('message', 'Deleted');
     }
