@@ -24,7 +24,6 @@
                             Edit
                         </a>
                     </div>
-
                 </div>
             </div>
         </div>
