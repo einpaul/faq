@@ -9,7 +9,7 @@
 
                     <div class="card-body ">
                         <div>
-                            @if ($data['google_id'])
+                            @if (Auth::user()->google_id)
                                 <img src="{{URL::asset($data['user']->avatar_original)}}" alt="profile Pic" height="200" width="200">
                             @endif
                         </div>

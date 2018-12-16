@@ -69,9 +69,8 @@ class ProfileController extends Controller
     {
 
         $user = Auth::user();
-        $google_id = $user->google_id;
         $profile = $user->profile;
-        return view( 'profile')->with( 'data', [ 'profile'=> $profile, 'user' => $user, 'google_id' => $google_id]);
+        return view( 'profile')->with( 'data', [ 'profile'=> $profile, 'user' => $user]);
     }
 
     /**
