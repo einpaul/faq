@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Profile;
 use App\User;
 
-use App\Http\Controllers\MySpecialMethods;
-
 class ProfileController extends Controller
 {
     /**
@@ -67,7 +65,6 @@ class ProfileController extends Controller
     public function show($id)
 
     {
-
         $user = Auth::user();
         $profile = $user->profile;
         return view( 'profile')->with( 'data', [ 'profile'=> $profile, 'user' => $user]);
