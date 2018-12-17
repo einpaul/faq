@@ -12,6 +12,7 @@ To run the faq project
 8. Both users can ask and answer questions.
 9. Admin user can  update, delete any users questions and answers.
 10. Normal user can only update/delete his/her own question
-11. To login as admin user email = 'admin@gmail.com', password = 'admin123'
+11. To login as admin user, visit 'http://morning-ridge-18815.herokuapp.com/admin'
+    with email = 'admin@gmail.com', password = 'admin123'
 
  
