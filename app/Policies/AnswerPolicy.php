@@ -43,7 +43,7 @@ class AnswerPolicy
     public function update(User $user, Answer $answer)
 
         {
-            if ($user->isAdmin() || $user->id === $answer->user_id) {
+            if ($user->isAdmin() || $user->id == $answer->user_id) {
                 return true;
             }
         }
@@ -59,7 +59,7 @@ class AnswerPolicy
     public function delete(User $user, Answer $answer)
 
     {
-        if ($user->isAdmin() || $user->id === $answer->user_id) {
+        if ($user->isAdmin() || $user->id == $answer->user_id) {
             return true;
         }
     }

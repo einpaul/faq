@@ -88,7 +88,7 @@ class AnswerController extends Controller
             'body.min' => 'Body must be at least 5 characters',
         ]);
 
-        $answer = Answer::find($answer);
+//        $answer = Answer::find($answer);
         $answer->body = $request->body;
         $answer->save();
         return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');

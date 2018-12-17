@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Question;
+use App\Answer;
 use App\Policies\QuestionPolicy;
+use App\Policies\AnswerPolicy;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

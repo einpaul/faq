@@ -42,7 +42,7 @@ class QuestionPolicy
      */
     public function update(User $user, Question $question)
     {
-        if ($user->isAdmin() || $user->id === $question->user_id) {
+        if ($user->isAdmin() || $user->id == $question->user_id) {
             return true;
         }
     }
@@ -56,7 +56,7 @@ class QuestionPolicy
      */
     public function delete(User $user, Question $question)
     {
-        if ($user->isAdmin() || $user->id === $question->user_id) {
+        if ($user->isAdmin() || $user->id == $question->user_id) {
             return true;
         }
     }
