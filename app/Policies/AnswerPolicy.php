@@ -48,7 +48,6 @@ class AnswerPolicy
             }
         }
 
-
     /**
      * Determine whether the user can delete the answer.
      *
@@ -56,7 +55,7 @@ class AnswerPolicy
      * @param  \App\Answer  $answer
      * @return mixed
      */
-    public function delete(User $user, Answer $answer)
+    public function destroy(User $user, Answer $answer)
 
     {
         if ($user->isAdmin() || $user->id == $answer->user_id) {

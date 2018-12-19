@@ -58,7 +58,7 @@ class QuestionController extends Controller
         $question = new Question($input);
         $question->user()->associate(Auth::user());
         $question->save();
-        return redirect()->route('home')->with('message', 'IT WORKS!');
+        return redirect()->route('home')->withSuccess('IT WORKS!');
         // return redirect()->route('questions.show', ['id' => $question->id]);
     }
 
@@ -103,7 +103,7 @@ class QuestionController extends Controller
         ]);
         $question->body = $request->body;
         $question->save();
-        return redirect()->route('questions.show',['question_id' => $question->id])->with('message', 'Saved');
+        return redirect()->route('questions.show',['question_id' => $question->id])->withSuccess('Saved');
     }
     /**
      * Remove the specified resource from storage.
@@ -115,6 +115,6 @@ class QuestionController extends Controller
     {
         $this->authorize('delete', $question);
         $question->delete();
-        return redirect()->route('home')->with('message', 'Deleted');
+        return redirect()->route('home')->withWarning('Deleted');
     }
 }

@@ -54,7 +54,7 @@ class ProfileController extends Controller
         $profile->user()->associate(Auth::user());
         $profile->save();
 //        return redirect()->route('home')->with('message', 'Profile Created');
-        return redirect()->route('profile.show', ['user_id' => $profile->user_id,'profile_id' => $profile->id])->with('message', 'IT WORKS!');
+        return redirect()->route('profile.show', ['user_id' => $profile->user_id,'profile_id' => $profile->id])->withSuccess('IT WORKS!');
     }
 
     /**
@@ -107,7 +107,7 @@ class ProfileController extends Controller
         $profile->lname = $request->lname;
         $profile->body = $request->body;
         $profile->save();
-        return redirect()->route('home')->with('message', 'Updated Profile');
+        return redirect()->route('home')->withSuccess('Updated Profile');
     }
 
     /**

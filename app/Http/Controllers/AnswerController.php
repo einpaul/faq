@@ -46,7 +46,7 @@ class AnswerController extends Controller
         $Answer->user()->associate(Auth::user());
         $Answer->question()->associate($question);
         $Answer->save();
-        return redirect()->route('questions.show',['question_id' => $question->id])->with('message', 'Saved');
+        return redirect()->route('questions.show',['question_id' => $question->id])->withSuccess('Saved');
     }
     /**
      * Display the specified resource.
@@ -80,7 +80,6 @@ class AnswerController extends Controller
      */
     public function update(Request $request, $question, $answer)
     {
-        $this->authorize('update', $answer);
         $input = $request->validate([
             'body' => 'required|min:5',
         ], [
@@ -88,10 +87,16 @@ class AnswerController extends Controller
             'body.min' => 'Body must be at least 5 characters',
         ]);
 
-//        $answer = Answer::find($answer);
-        $answer->body = $request->body;
-        $answer->save();
-        return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
+        $answer = Answer::find($answer);
+        if (Auth::user()->can('update', $answer)){
+            $answer->body = $request->body;
+            $answer->save();
+            return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->withSuccess('Updated');
+        }
+        else {
+            return redirect()->route('questions.show',['question_id' => $question])->withWarning('You are not authorized to update this answer.');
+        }
+
     }
     /**
      * Remove the specified resource from storage.
@@ -102,9 +107,16 @@ class AnswerController extends Controller
     public function destroy($question, $answer)
 
     {
-        $this->authorize('delete', $answer);
         $answer = Answer::find($answer);
-        $answer->delete();
-        return redirect()->route('questions.show',['question_id' => $question])->with('message', 'Deleted');
+        if (Auth::user()->can('destroy', $answer)) {
+            $answer->delete();
+            return redirect()->route('questions.show',['question_id' => $question])->withSuccess('Deleted Answer');
+            }
+        else {
+            return redirect()->route('questions.show',['question_id' => $question])->withWarning('You are not authorized to delete this answer.');
+        }
+
     }
+
 }
+
